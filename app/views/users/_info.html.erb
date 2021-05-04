@@ -6,8 +6,34 @@
   </tr>
   <tr>
 	  <th>introduction</th>
-	  <th><%= user.introduction %></th>
-  </tr>
+	  <th><%= user.introduction %></th></tr>
+	  <tr>
+	    <th>follows</th>
+	   <td> <%= link_to follower_user_path(user.id) do %>
+	    <%= "#{user.follower.count}" %>
+	    <% end %></td>
+	  </tr>
+	  <tr>
+	    <th>followers</th> 
+	    <th><%= link_to followed_user_path(user.id) do %>
+	    <%= "#{user.followed.count}" %>
+	    <% end %></th>
+	  </tr>
+	  
+	  
+	  <tr>
+	   <% if user == current_user %>
+          <td></td>
+          <% else %>
+         <td><% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), method: :POST, class: 'btn btn-success' %>
+      <% end %>
+      <% end %></td>
+	  </tr>
+	  
+	  
 </table>
 
 <div class='row'>
