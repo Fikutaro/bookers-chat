@@ -35,8 +35,9 @@
         </td>
         
           
-         
-            <td>コメント数: <%= @book.book_comments.count %></td>
+        <td id="comments_count">
+         <%= render partial: 'book_comments/count', locals: { book_comments: @book_comments } %>
+       </td>
           
         </tr>
       </table>
