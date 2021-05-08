@@ -13,6 +13,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Rememberable
       t.datetime :remember_created_at
+      
+   
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
@@ -36,6 +38,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :profile_image_id
       t.timestamps null: false
+      
+      t.integer :postal_code, null: false
+      t.string :prefecture_code, null: false
+      t.string :city, null: false
+      t.string :street, null: false
+      t.string :other_address
     end
 
     add_index :users, :email,                unique: true
