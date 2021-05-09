@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Search　searchControllerTest < ActionDispatch::IntegrationTest
+class UserRoomTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

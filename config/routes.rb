@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   get '/search' => 'search#search'
   
+  get 'chat/:id', to: 'chats#show',as: 'chat'
+  
+  resources :chats, only: [:create]
+  
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+  
   resources :users,only: [:show,:index,:edit,:update,] do
     get :follower, on: :member
     get :followed, on: :member
